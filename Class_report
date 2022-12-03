@@ -1,0 +1,67 @@
+package report;
+import java.util.*;
+
+
+class Class_report {
+ 
+  static void studentRecord(String[][] S, int N)
+  {
+    
+    int maxi = Integer.MIN_VALUE;
+    String result="";
+    for (int i = 0; i < N; i++) {
+    	result = "";
+      int avg = (Integer.parseInt(S[i][2]) + Integer.parseInt(S[i][3]) + Integer.parseInt(S[i][4]))/ 3;
+      if (avg > maxi) {
+        maxi = avg;
+        result = S[i][0];
+      }
+      else if (avg == maxi) {
+        result = result + " " + S[i][0];
+      }
+    }
+    System.out.println(result +" has maximum Average that is:" + maxi);
+    
+// Average marks of Students in a subject
+    int sumS=0;
+    int sumM=0;
+    int sumE=0;
+    for (int i = 0; i < N; i++) {
+       
+        sumE+=Integer.parseInt(S[i][2]); 
+       
+        sumM+=Integer.parseInt(S[i][3]); 
+        
+        sumS+= Integer.parseInt(S[i][4]);
+        }
+        int avgE= sumE/N;
+        int avgM= sumM/N;
+        int avgS= sumS/N;
+        
+        System.out.println("Average marks of Students in English is:"+ avgE +", in Maths is: " + avgM +" and in Science is: "+ avgS);
+  
+ // average percentage of whole class
+      int avg=0; int avgP=0;
+    for(int i=0; i<N; i++) {
+    	int av=0;int sumR=0;
+    	if (S[i][1]=="2") {	
+    		sumR+=Integer.parseInt(S[i][2])+Integer.parseInt(S[i][3])+Integer.parseInt(S[i][4]);
+    	}
+    	av=(sumR/3);	
+    	avg=avg+av;		
+    }
+    avgP=avg/N;
+    System.out.println("Average Percentage of whole class in recent semister is: "+avgP+"%");
+    
+   
+  }
+  public static void main (String[] args) {
+    int N = 2;
+    String[][] file= { {"Shrikanth","1", "20", "30" ,"10"},
+    				   {"Shrikanth","2", "21", "31" ,"11"},
+                       {"Ram" ,"1","100", "50", "10"},
+                       {"Ram" ,"2","99", "51", "11"} };
+ 
+    studentRecord(file, N*2);
+  }
+}
